@@ -3,11 +3,13 @@ const router = express.Router();
 const domainsDB = require('../domains_db');
 const xss = require('xss');
 
+
+
 router.get('/', (req, res, next) => {
 
   let domain = xss(req.query['domain']);
 
-  domain = domain.replace(/.*?:\/\//g, "").replace("www.","").toLowerCase();
+  domain = domain.replace(/.*?:\/\//g, "").replace("www.","").replace(/\/$/, "").toLowerCase();
 
   if(domain){
 
