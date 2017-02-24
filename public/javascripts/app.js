@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (xhr.readyState === 4) {
       if (xhr.status === 200){
         var res = JSON.parse(xhr.responseText);
-        if(res.affected){
+        if(res.affected && res.affected.length > 0){
           //alert("domain "+res.domain+" is affected");
-          switchToAffected();
+          switchToAffected(res.affected);
 
         }else{
           switchToNotAffected();
@@ -120,9 +120,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     document.location.search = kvp.join('&');
   }
 
-  switchToAffected = function(){
+  switchToAffected = function(affected){
     resetState();
-    resultMsg.innerHTML = "This domain is affected<br>Close all active sessions for this service, change your passwords, and enable 2FA.";
+    let len = affected.length;
+    if(len === 1){
+      resultMsg.innerHTML = "This domain is affected<br>Close all active sessions for this service, change your passwords, and enable 2FA.";
+    } else {
+      resultMsg.innerHTML = "This domain could be affected, but there is no distinct result";
+      for(let i = 0; i < affected.length; i++){
+        resultMsg.innerHTML += "<p>" + affected[i] + "</p>";
+      }
+    }
+    
     removeClass(resultMsg, "hidden");
     addClass(document.body, "affected-state");
 

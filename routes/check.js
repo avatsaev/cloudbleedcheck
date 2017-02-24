@@ -11,11 +11,23 @@ router.get('/', (req, res, next) => {
 
   if(domain){
 
+    let affected_domains = [];
+    if(domainsDB.indexOf(domain) != -1){
+      affected_domains.push(domain); // distinct result
+    } else {
+      for(let i = 0; i < domainsDB.length; i++){
+        let line = domainsDB[i];
+        if(line.indexOf(domain) >= 0){
+          affected_domains.push(line);
+        }
+      }
+    }
+
     res.status(200);
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({
       domain,
-      affected: domainsDB.indexOf(domain) != -1
+      affected: affected_domains
     }));
 
   }else{
