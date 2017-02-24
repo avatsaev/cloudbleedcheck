@@ -17,16 +17,18 @@ router.get('/', (req, res, next) => {
     if(domainsDB.indexOf(domain) != -1){
       affected_domains.push(domain); // distinct result
     } else {
-      for(let i = 0; i < domainsDB.length; i++){
-        let line = domainsDB[i];
-        if(line.indexOf(domain) >= 0){
-          affected_domains.push(line);
+
+      if(!isValidDomain(domain)){
+        for(let i = 0; i < domainsDB.length; i++){
+          let line = domainsDB[i];
+          if(line.indexOf(domain) >= 0){
+            affected_domains.push(line);
+          }
+          if(affected_domains.length > 40 ) break; //limit results to 40 entries due to performance degradation on the frontend
         }
-        if(affected_domains.length > 40 ) break; //limit results to 40 entries due to performance degradation on the frontend
       }
+
     }
-
-
 
 
     res.status(200);
@@ -48,5 +50,10 @@ router.get('/', (req, res, next) => {
 
 
 });
+
+function isValidDomain(domain) {
+  var re = new RegExp(/^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/);
+  return domain.match(re);
+}
 
 module.exports = router;

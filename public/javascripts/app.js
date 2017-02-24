@@ -125,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let len = affected.length;
     if(len === 1){
       resultMsg.innerHTML = "This domain is affected<br>Close all active sessions for this service, change your passwords, and enable 2FA.";
+      addClass(document.body, "affected-state");
     } else {
 
       resultMsg.innerHTML = "<p>This domain could be affected, but there is no distinct result</p>";
@@ -136,11 +137,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
       domain_list_container += "</div>";
       resultMsg.innerHTML += domain_list_container;
-
+      addClass(document.body, "warning-state");
     }
-    
+
     removeClass(resultMsg, "hidden");
-    addClass(document.body, "affected-state");
+
 
   };
 
@@ -153,10 +154,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   };
 
+
   switchToUnknown = function(){
     resetState();
     addClass(document.body, "unknown-state");
-    removeClass(resultMsg, "hidden");
     addClass(resultMsg, "hidden");
 
   };
@@ -165,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     removeClass(document.body, "affected-state");
     removeClass(document.body, "not-affected-state");
     removeClass(document.body, "unknown-state");
+    removeClass(document.body, "warning-state");
     addClass(resultMsg, "hidden");
   };
 

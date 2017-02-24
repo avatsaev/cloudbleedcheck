@@ -35,6 +35,18 @@ body{
   color: #ECF0F1;
 }
 
+.warning-state a, a:hover{
+  text-decoration: underline;
+  font-weight: 600;
+  color: #ECF0F1;
+}
+
+.warning-state{
+  background-color: #E47E30;
+  color: #ECF0F1;
+}
+
+
 .unknown-state{
   background-color: #ECF0F1;
 }
@@ -51,12 +63,12 @@ body{
 #result-msg{
   font-size: 19px;
   font-weight: bold;
-  text-decoration: underline;
 
 }
 .domain-result-list{
   max-height: 200px;
   overflow-y: scroll;
+  text-decoration: none;
 }
 .domain-result-list-item{
 
@@ -65,5 +77,6 @@ body{
   font-size: 12px;
   font-weight: 300;
   padding: 5px;
+  text-decoration: none !important;
 
 }
