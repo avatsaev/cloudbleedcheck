@@ -175,12 +175,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
   submitRquest = function(){
-    checkDomain(getInputDomain());
 
-    if (history.pushState) {
-      var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?domain='+getInputDomain();
-      window.history.pushState({path:newurl},'',newurl);
+    if(getInputDomain().length) {
+
+      checkDomain(getInputDomain());
+
+      if (history.pushState) {
+        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?domain='+getInputDomain();
+        window.history.pushState({path:newurl},'',newurl);
+      }
+
     }
+
 
   };
 
