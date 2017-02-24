@@ -5,7 +5,9 @@ const xss = require('xss');
 
 router.get('/', (req, res, next) => {
 
-  const domain = xss(req.query['domain']);
+  let domain = xss(req.query['domain']);
+
+  domain = domain.replace(/.*?:\/\//g, "").toLowerCase();
 
   if(domain){
 
