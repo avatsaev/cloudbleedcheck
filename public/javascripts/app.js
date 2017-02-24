@@ -126,10 +126,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if(len === 1){
       resultMsg.innerHTML = "This domain is affected<br>Close all active sessions for this service, change your passwords, and enable 2FA.";
     } else {
-      resultMsg.innerHTML = "This domain could be affected, but there is no distinct result";
+
+      resultMsg.innerHTML = "<p>This domain could be affected, but there is no distinct result</p>";
+      var domain_list_container ="<div class='domain-result-list'>";
+
       for(let i = 0; i < affected.length; i++){
-        resultMsg.innerHTML += "<p>" + affected[i] + "</p>";
+        domain_list_container += "<p class='domain-result-list-item'>" + affected[i] + "</p>";
       }
+
+      domain_list_container += "</div>";
+      resultMsg.innerHTML += domain_list_container;
+
     }
     
     removeClass(resultMsg, "hidden");

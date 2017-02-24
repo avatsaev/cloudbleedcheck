@@ -22,8 +22,12 @@ router.get('/', (req, res, next) => {
         if(line.indexOf(domain) >= 0){
           affected_domains.push(line);
         }
+        if(affected_domains.length > 40 ) break; //limit results to 40 entries due to performance degradation on the frontend
       }
     }
+
+
+
 
     res.status(200);
     res.setHeader('Content-Type', 'application/json');
