@@ -85,6 +85,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   }
 
+  function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+  }
+
+  function insertParam(key, value) {
+
+    key = encodeURI(key); value = encodeURI(value);
+
+    var kvp = document.location.search.substr(1).split('&');
+
+    var i=kvp.length; var x; while(i--) {
+    x = kvp[i].split('=');
+
+      if (x[0]==key) {
+        x[1] = value;
+        kvp[i] = x.join('=');
+        break;
+      }
+    }
+
+    if(i<0) kvp[kvp.length] = [key,value].join('=');
+
+    //this will reload the page, it's likely better to store this until finished
+    document.location.search = kvp.join('&');
+  }
+
   switchToAffected = function(){
     resetState();
     resultMsg.innerHTML = "This domain is affected";
@@ -95,8 +130,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   switchToNotAffected = function(){
     resetState();
-    addClass(document.body, "not-affected-state");
     resultMsg.innerHTML = "This domain is not affected";
+    addClass(document.body, "not-affected-state");
     removeClass(resultMsg, "hidden");
 
 
@@ -122,16 +157,38 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (!e) e = window.event;
     var keyCode = e.keyCode || e.which;
     if (keyCode == '13'){
-      checkDomain(domainInput.value);
+      submitRquest();
       return false;
     }
   };
 
   submitButton.onclick = function (e) {
     e.preventDefault();
-    checkDomain(domainInput.value);
-  }
+    submitRquest();
+  };
 
+
+
+  getInputDomain = function(){
+      return domainInput.value
+  };
+
+
+  submitRquest = function(){
+    checkDomain(getInputDomain());
+
+    if (history.pushState) {
+      var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?domain='+getInputDomain();
+      window.history.pushState({path:newurl},'',newurl);
+    }
+
+  };
+
+  var domainQueryParam = findGetParameter('domain');
+  if (domainQueryParam){
+    domainInput.value = domainQueryParam;
+    submitRquest();
+  }
 
 });
 
