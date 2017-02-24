@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   switchToAffected = function(){
     resetState();
-    resultMsg.innerHTML = "This domain is affected";
+    resultMsg.innerHTML = "This domain is affected<br>Close all active sessions for this service, change your passwords, and enable 2FA.";
     removeClass(resultMsg, "hidden");
     addClass(document.body, "affected-state");
 
