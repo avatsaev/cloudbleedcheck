@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
 
   let domain = xss(req.query['domain']);
 
-  domain = domain.replace(/.*?:\/\//g, "").toLowerCase();
+  domain = domain.replace(/.*?:\/\//g, "").replace("www.","").toLowerCase();
 
   if(domain){
 
