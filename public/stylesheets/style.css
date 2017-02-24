@@ -6,7 +6,7 @@
 }
 
 body{
-  color: #35495D;
+  color: #7F8C8D ;
   background-color: #ECF0F1;
   -webkit-transition: background-color 600ms linear;
   -ms-transition: background-color 600ms linear;
@@ -23,8 +23,20 @@ body{
   color: #ECF0F1;
 }
 
+.not-affected-state a, a:hover{
+  text-decoration: underline;
+  font-weight: 600;
+  color: #ECF0F1;
+}
+
+.affected-state a, a:hover{
+  text-decoration: underline;
+  font-weight: 600;
+  color: #ECF0F1;
+}
+
 .unknown-state{
-  background-color: #BDC3C7;
+  background-color: #ECF0F1;
 }
 
 .neutral-state{
@@ -36,7 +48,7 @@ body{
   display: none;
 }
 
-#result{
+#result-msg{
   font-size: 19px;
   font-weight: bold;
   text-decoration: underline;

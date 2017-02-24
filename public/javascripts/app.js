@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   switchToAffected = function(){
     resetState();
     resultMsg.innerHTML = "This domain is affected";
+    removeClass(resultMsg, "hidden");
     addClass(document.body, "affected-state");
 
   };

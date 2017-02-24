@@ -6,11 +6,12 @@ block content
       .cover-container
         .masthead.clearfix
           .inner
-            h3.masthead-brand CloudBleedCheck
+            a(href="https://cloudbleedcheck.com")
+              h3.masthead-brand CloudBleedCheck
         .inner.cover.center(style="margin: 0 auto; text-align: center")
           h1.cover-heading CloudBleedCheck allows you to check if a domain name is affected by CloudBleed bug.
           p.lead
-            | Database contains 2.2 Million entries of affected domain names.
+            | Database contains 4,287,625 entries of potentially affected domains.
           p#result-msg.lead.hidden
             | This domain name is affected
 
@@ -22,13 +23,37 @@ block content
               form
                 input#domain-input.form-control.form-control-lg(type='text', placeholder='example.com')
                 <br>
-                button#submit-button.btn.btn-primary.btn-lg(style="cursor:pointer")
+                button#submit-button.btn.btn-secondary.btn-lg(style="cursor:pointer")
                   | CHECK
 
 
         .mastfoot
           .inner
             p
-              | Tool by @avatsaev
+              | Tool by
+              |
+              a(href="https://twitter.com/avatsaev" target="_blank")
+                i.fa.fa-twitter(aria-hidden='true')
+                |
+                | Aslan Vatsaev (@avatsaev)
+              br
+              | Source code
+              |
+              a(href="https://github.com/avatsaev/cloudbleedcheck.com" target="_blank")
+                i.fa.fa-github(aria-hidden='true')
+                |
+                | Github
+
+              br
+              | Database
+              |
+              a(href="https://github.com/pirate/sites-using-cloudflare" target="_blank")
+                i.fa.fa-github(aria-hidden='true')
+                |
+                | Github
+
+
+
+
 
 
