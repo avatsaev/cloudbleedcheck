@@ -1,0 +1,43 @@
+.col-md-12 column {
+  text-align:center;
+}
+.col-md-12 column form {
+  display:inline-block;
+}
+
+body{
+  color: #35495D;
+  background-color: #ECF0F1;
+  -webkit-transition: background-color 600ms linear;
+  -ms-transition: background-color 600ms linear;
+  transition: background-color 600ms linear;
+}
+
+.affected-state{
+  background-color: #BE3A31;
+  color: #ECF0F1;
+}
+
+.not-affected-state{
+  background-color: #69C77E;
+  color: #ECF0F1;
+}
+
+.unknown-state{
+  background-color: #BDC3C7;
+}
+
+.neutral-state{
+  background-color: #ECF0F1;
+  color: #35495D;
+}
+
+.hidden{
+  display: none;
+}
+
+#result{
+  font-size: 19px;
+  font-weight: bold;
+  text-decoration: underline;
+}

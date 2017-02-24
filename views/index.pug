@@ -7,17 +7,23 @@ block content
         .masthead.clearfix
           .inner
             h3.masthead-brand CloudBleedCheck
-        .inner.cover
+        .inner.cover.center(style="margin: 0 auto; text-align: center")
           h1.cover-heading CloudBleedCheck allows you to check if a domain name is affected by CloudBleed bug.
           p.lead
             | Database contains 2.2 Million entries of affected domain names.
+          p#result-msg.lead.hidden
+            | This domain name is affected
 
-          div.lead
-            form
-              .form-group.row
 
-                .col-sm-10.center
-                  input#lgFormGroupInput.form-control.form-control-lg(type='text', placeholder='example.com')
+
+          .form-group.row
+
+            .col-md-12.center
+              form
+                input#domain-input.form-control.form-control-lg(type='text', placeholder='example.com')
+                <br>
+                button#submit-button.btn.btn-primary.btn-lg(style="cursor:pointer")
+                  | CHECK
 
 
         .mastfoot
