@@ -63,6 +63,8 @@ body{
 #result-msg{
   font-size: 19px;
   font-weight: bold;
+  color: #e3e8eb;
+  text-shadow: 0px 1px 1px rgba(1,1,1,0.6);
 
 }
 .domain-result-list{
